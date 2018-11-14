@@ -12,19 +12,28 @@
 ?>
 
 <footer id="colophon" class="site-footer">
-	<div class="site-info">
-		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wprig' ) ); ?>">
+
+
+		<section class="firmainfo">
+			<h4>Norges brannskole</h4>
+			<p>Erling Johannessens vei 1<br>
+				9441 Fjelldal<br>
+				Telefon:76 91 90 00<br>
+				E-post: firmapost@nbsk.no<br>
+				Organisasjonsmummer: 974 760 983</p>
+		</section>
+		<nav class="social-menu">
 			<?php
-			/* translators: %s: CMS name, i.e. WordPress. */
-			printf( esc_html__( 'Proudly powered by %s', 'wprig' ), 'WordPress' );
+				wp_nav_menu(
+					array(
+						'theme_location' => 'social',
+						'menu_id'        => 'social-menu',
+						'container'      => 'ul',
+					)
+				);
 			?>
-		</a>
-		<span class="sep"> | </span>
-		<?php
-			/* translators: 1: Theme name, 2: Theme author. */
-			printf( esc_html__( 'Theme: %1$s by %2$s.', 'wprig' ), '<a href="' . esc_url( 'https://github.com/wprig/wprig/' ) . '">WP Rig</a>', 'the contributors' );
-		?>
-	</div><!-- .site-info -->
+		</nav>
+
 </footer><!-- #colophon -->
 </div><!-- #page -->
 

@@ -11,6 +11,16 @@ const SITENAV = document.querySelector( '.main-navigation' ),
 	};
 
 /**
+ * var for the -site-header
+ */
+const SITEHEADER = document.querySelector( '.site-header' );
+
+ // var for .site reveal class
+const SITE = document.querySelector( '.site' );
+
+const BODDY = document.getElementsByTagName("BODY")[0];
+
+/**
  * Initiate the main navigation script.
  */
 function initMainNavigation() {
@@ -108,10 +118,32 @@ function initMainNavigation() {
 initMainNavigation();
 
 /**
+ * Initiate the mobile menu SEARCH button.
+ */
+function initSearchToggle() {
+	const SEARCHTOGGLE = SITEHEADER.querySelector( '.search-toggle' );
+
+	// Return early if SEARCHTOGGLE is missing.
+	if ( undefined === SEARCHTOGGLE ) {
+		return;
+	}
+
+	// Add an initial values for the attribute.
+	SEARCHTOGGLE.setAttribute( 'aria-expanded', 'false' );
+
+	SEARCHTOGGLE.addEventListener( 'click', function() {
+		SITE.classList.toggle( 'search-is-open' ),
+		BODDY.classList.toggle( 'search-is-open' );
+	}, false );
+}
+
+initSearchToggle();
+
+/**
  * Initiate the mobile menu toggle button.
  */
 function initMenuToggle() {
-	const MENUTOGGLE = SITENAV.querySelector( '.menu-toggle' );
+	const MENUTOGGLE = SITEHEADER.querySelector( '.menu-toggle' );
 
 	// Return early if MENUTOGGLE is missing.
 	if ( undefined === MENUTOGGLE ) {
@@ -122,6 +154,7 @@ function initMenuToggle() {
 	MENUTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	MENUTOGGLE.addEventListener( 'click', function() {
+		SITE.classList.toggle( 'reveal' );
 		SITENAV.classList.toggle( 'toggled-on' );
 		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
 	}, false );

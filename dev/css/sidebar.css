@@ -9,6 +9,6 @@
 
 @media (--sidebar-query) {
 	.primary-sidebar {
-		padding: 0;
+		padding: 1.5rem;
 	}
 }

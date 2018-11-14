@@ -45,6 +45,7 @@ function wprig_setup() {
 	register_nav_menus(
 		array(
 			'primary' => esc_html__( 'Primary', 'wprig' ),
+			'social' => esc_html__( 'social', 'wprig'),
 		)
 	);
 
@@ -315,6 +316,9 @@ function wprig_styles() {
 	// Enqueue main stylesheet.
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
 
+	// Enqueue FontAwesome.
+	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css' );
+
 	// Register component styles that are printed as needed.
 	wp_register_style( 'wprig-comments', get_theme_file_uri( '/css/comments.css' ), array(), '20180514' );
 	wp_register_style( 'wprig-content', get_theme_file_uri( '/css/content.css' ), array(), '20180514' );
@@ -351,6 +355,9 @@ function wprig_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+	/** Enqueue the clear searchfield script */
+	wp_enqueue_script( 'wprig-clear-searchfield', get_theme_file_uri( '/js/clear-searchfield.js' ), array( 'jquery'), '1.0', false );
+	wp_script_add_data( 'wprig-clear-searchfield', 'async', false );
 }
 add_action( 'wp_enqueue_scripts', 'wprig_scripts' );
 

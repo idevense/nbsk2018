@@ -27,12 +27,25 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wprig' ); ?></a>
+
 		<header id="masthead" class="site-header">
+			<!-- menu toggle button -->
+				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'wprig' ); ?>" aria-controls="primary-menu" aria-expanded="false"
+					<?php if ( wprig_is_amp() ) : ?>
+						on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
+						[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
+					<?php endif; ?>
+				>
+				<i class="fas fa-bars"></i>
+					<?php esc_html_e( 'Menu', 'wprig' ); ?>
+				</button>
+
 			<?php if ( has_header_image() ) : ?>
 				<figure class="header-image">
 					<?php the_header_image_tag(); ?>
 				</figure>
 			<?php endif; ?>
+
 			<div class="site-branding">
 				<?php the_custom_logo(); ?>
 				<?php if ( is_front_page() && is_home() ) : ?>
@@ -47,7 +60,15 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
+			<button class="search-toggle">
+			<i class="fa fa-search fa-2" type="icon"></i>
+			</button>
+			<div class="site-headersearch">
+				<?php get_search_form(); ?>
+			</div>
+</header><!-- #masthead -->
+
+<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
 				<?php if ( wprig_is_amp() ) : ?>
 					[class]=" siteNavigationMenu.expanded ? 'main-navigation toggled-on' : 'main-navigation' "
 				<?php endif; ?>
@@ -62,14 +83,7 @@
 					</amp-state>
 				<?php endif; ?>
 
-				<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'wprig' ); ?>" aria-controls="primary-menu" aria-expanded="false"
-					<?php if ( wprig_is_amp() ) : ?>
-						on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
-						[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
-					<?php endif; ?>
-				>
-					<?php esc_html_e( 'Menu', 'wprig' ); ?>
-				</button>
+				<!-- button used to be here -->
 
 				<div class="primary-menu-container">
 					<?php
@@ -84,5 +98,5 @@
 
 					?>
 				</div>
+
 			</nav><!-- #site-navigation -->
-		</header><!-- #masthead -->
