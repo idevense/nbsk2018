@@ -18,7 +18,7 @@ const SITEHEADER = document.querySelector( '.site-header' );
  // var for .site reveal class
 const SITE = document.querySelector( '.site' );
 
-const BODDY = document.getElementsByTagName("BODY")[0];
+const BODDY = document.getElementsByTagName( 'BODY' )[0];
 
 /**
  * Initiate the main navigation script.

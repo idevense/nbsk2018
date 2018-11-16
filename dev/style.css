@@ -450,7 +450,14 @@ body.search-is-open .site-headersearch {
 		position: relative;
 		left: -15em;
 		transition: ease-out 0.3s;
+		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 15em calc( 100% );
+		grid-template-areas:
+		"nav header"
+		"nav main"
+		"nav footer";
+	}
+	.has-sidebar .site {
 		grid-template-areas:
 		"nav header"
 		"nav main"
@@ -476,6 +483,7 @@ body.search-is-open .site-headersearch {
 		margin: 0;
 		padding-left: 2em;
 		min-width: 0;
+		min-height: 100%;
 		background-color: #757575;
 	}
 
@@ -579,6 +587,8 @@ big {
 --------------------------------------------------------------*/
 html {
 	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
 }
 
 *,
@@ -590,6 +600,8 @@ html {
 
 body {
 	background: #fff;
+	height: 100%;
+	width: 100%;
 	/* Fallback for when there is no custom background color defined. */ }
 
 blockquote, q {
