@@ -941,7 +941,6 @@ textarea {
 }
 
 .reveal .menu-toggle {
-	background-color: red;
 	z-index: 9999;
 }
 
@@ -1010,6 +1009,7 @@ textarea {
 	}
 	.main-navigation.toggled-on {
 		display: block;
+		border-bottom: 1px solid #d7d7d7;
 
 	}
 	.main-navigation ul li a {
