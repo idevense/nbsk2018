@@ -167,7 +167,7 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: header.php:71
+#: header.php:75
 msgid "Main menu"
 msgstr ""
 
@@ -259,6 +259,10 @@ msgstr ""
 
 #: inc/template-tags.php:292
 msgid "Next attachment:"
+msgstr ""
+
+#: nosidebar-page.php:3
+msgid "Nosidebar Page Template"
 msgstr ""
 
 #: template-parts/content-none.php:13
