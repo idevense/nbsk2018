@@ -154,6 +154,7 @@ function initMenuToggle() {
 	MENUTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	MENUTOGGLE.addEventListener( 'click', function() {
+		MENUTOGGLE.classList.toggle( 'is-active' );
 		SITE.classList.toggle( 'reveal' );
 		SITENAV.classList.toggle( 'toggled-on' );
 		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );

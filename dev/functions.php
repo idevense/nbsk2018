@@ -46,6 +46,7 @@ function wprig_setup() {
 		array(
 			'primary' => esc_html__( 'Primary', 'wprig' ),
 			'social' => esc_html__( 'social', 'wprig'),
+			'footer' => esc_html__( 'Footer', 'wprig'),
 		)
 	);
 
@@ -231,6 +232,16 @@ function wprig_fonts_url() {
 	 * Translator: If Crimson Text does not support characters in your language, translate this to 'off'.
 	 */
 	$crimson_text = esc_html_x( 'on', 'Crimson Text font: on or off', 'wprig' );
+	/**
+	 * Translator: If Barlow Semi Condensed does not support characters in your language, translate this to 'off'.
+	 */
+	$barlow_semi_condensed = esc_html_x( 'on', 'Barlow semi condensed font: on or off', 'wprig' );
+
+	/**
+	 * Translator: If Rubik does not support characters in your language, translate this to 'off'.
+	 */
+	$rubik = esc_html_x( 'on', 'Rubik font: on or off', 'wprig' );
+
 
 	$font_families = array();
 
@@ -242,7 +253,15 @@ function wprig_fonts_url() {
 		$font_families[] = 'Crimson Text:400,400i,600,600i';
 	}
 
-	if ( in_array( 'on', array( $roboto, $crimson_text ) ) ) {
+	if ( 'off' !== $barlow_semi_condensed ) {
+		$font_families[] = 'Barlow Semi Condensed:400,400i,600,600i';
+	}
+
+	if ( 'off' !== $rubik ) {
+		$font_families[] = 'Rubik:400,400i,500,500i,700,700i';
+	}
+
+	if ( in_array( 'on', array( $roboto, $crimson_text, $barlow_semi_condensed, $rubik  ) ) ) {
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
 			'subset' => urlencode( 'latin,latin-ext' ),
@@ -317,7 +336,9 @@ function wprig_styles() {
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
 
 	// Enqueue FontAwesome.
-	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css' );
+	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
+
+	wp_enqueue_style( 'load-hamburgers', get_theme_file_uri( '/css/hamburgers.css' ) , array(), '20180514' );
 
 	// Register component styles that are printed as needed.
 	wp_register_style( 'wprig-comments', get_theme_file_uri( '/css/comments.css' ), array(), '20180514' );
@@ -358,6 +379,10 @@ function wprig_scripts() {
 	/** Enqueue the clear searchfield script */
 	wp_enqueue_script( 'wprig-clear-searchfield', get_theme_file_uri( '/js/clear-searchfield.js' ), array( 'jquery'), '1.0', false );
 	wp_script_add_data( 'wprig-clear-searchfield', 'async', false );
+
+	/**Enqueue the stickyheader javascript */
+	wp_enqueue_script( 'wprig-stickyheader', get_theme_file_uri( '/js/stickyheader.js' ), array(), '1.0', false );
+	wp_script_add_data( 'wprig-stickyheader', 'defer', true );
 }
 add_action( 'wp_enqueue_scripts', 'wprig_scripts' );
 

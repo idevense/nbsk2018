@@ -1,4 +1,4 @@
-# Copyright (C) 2018 nbsk2018
+# Copyright (C) 2019 nbsk2018
 # This file is distributed under the same license as the nbsk2018 package.
 msgid ""
 msgstr ""
@@ -61,97 +61,111 @@ msgstr ""
 msgid "social"
 msgstr ""
 
-#: functions.php:107
+#: functions.php:49
+msgid "Footer"
+msgstr ""
+
+#: functions.php:108
 msgid "Dusty orange"
 msgstr ""
 
-#: functions.php:112
+#: functions.php:113
 msgid "Dusty red"
 msgstr ""
 
-#: functions.php:117
+#: functions.php:118
 msgid "Dusty wine"
 msgstr ""
 
-#: functions.php:122
+#: functions.php:123
 msgid "Dark sunset"
 msgstr ""
 
-#: functions.php:127
+#: functions.php:128
 msgid "Almost black"
 msgstr ""
 
-#: functions.php:132
+#: functions.php:133
 msgid "Dusty water"
 msgstr ""
 
-#: functions.php:137
+#: functions.php:138
 msgid "Dusty sky"
 msgstr ""
 
-#: functions.php:142
+#: functions.php:143
 msgid "Dusty daylight"
 msgstr ""
 
-#: functions.php:147
+#: functions.php:148
 msgid "Dusty sun"
 msgstr ""
 
-#: functions.php:168
+#: functions.php:169
 msgid "small"
 msgstr ""
 
-#: functions.php:169
+#: functions.php:170
 msgid "S"
 msgstr ""
 
-#: functions.php:174
+#: functions.php:175
 msgid "regular"
 msgstr ""
 
-#: functions.php:175
+#: functions.php:176
 msgid "M"
 msgstr ""
 
-#: functions.php:180
+#: functions.php:181
 msgid "large"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:182
 msgid "L"
 msgstr ""
 
-#: functions.php:186
+#: functions.php:187
 msgid "larger"
 msgstr ""
 
-#: functions.php:187
+#: functions.php:188
 msgid "XL"
 msgstr ""
 
-#: functions.php:229
+#: functions.php:230
 msgctxt "Roboto Condensed font: on or off"
 msgid "on"
 msgstr ""
 
-#: functions.php:233
+#: functions.php:234
 msgctxt "Crimson Text font: on or off"
 msgid "on"
 msgstr ""
 
-#: functions.php:298
+#: functions.php:238
+msgctxt "Barlow semi condensed font: on or off"
+msgid "on"
+msgstr ""
+
+#: functions.php:243
+msgctxt "Rubik font: on or off"
+msgid "on"
+msgstr ""
+
+#: functions.php:317
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:300
+#: functions.php:319
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:345
+#: functions.php:366
 msgid "Expand child menu"
 msgstr ""
 
-#: functions.php:346
+#: functions.php:367
 msgid "Collapse child menu"
 msgstr ""
 
@@ -159,15 +173,15 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: header.php:33
+#: header.php:62
 msgid "Open menu"
 msgstr ""
 
-#: header.php:40
+#: header.php:71
 msgid "Menu"
 msgstr ""
 
-#: header.php:75
+#: header.php:78
 msgid "Main menu"
 msgstr ""
 

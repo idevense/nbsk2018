@@ -29,6 +29,26 @@ wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If thi
 		?>
 		<?php the_posts_navigation(); ?>
 
+	<div class="excerptwrap">
+	<div class="excerptwrap-heading">
+		<h4>Aktuelt fra nbsk</h4>
+	</div>
+	<?php // Display blog posts on any page @ https://m0n.co/l
+		$temp = $wp_query; $wp_query= null;
+		$wp_query = new WP_Query(); $wp_query->query('posts_per_page=3' . '&paged='.$paged);
+		while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+		<section class="excerpt-section">
+		<h3><a href="<?php the_permalink(); ?>" title="Read more"><?php the_title(); ?></a></h3>
+		<?php the_excerpt(); ?>
+		</section>
+		<?php endwhile; ?>
+
+		<?php wp_reset_postdata(); ?>
+		<div >
+			<a class="button" href="#"> Nyhetsarkiv </a>
+	</div>
+	</div>
+
 	</main><!-- #primary -->
 
 <?php

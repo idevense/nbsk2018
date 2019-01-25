@@ -13,7 +13,9 @@
   "bugs": {
     "url": "https://github.com/wprig/wprig/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hamburgers": "^1.1.3"
+  },
   "devDependencies": {
     "ajv": "^6.5.0",
     "autoprefixer": "^8.5.0",

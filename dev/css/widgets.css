@@ -7,7 +7,7 @@
 }
 
 .widget li {
-	line-height: 1.8em;
+	line-height: 1.6em;
 }
 
 .widget_archive ul,
@@ -118,7 +118,7 @@
 /* Search widget */
 .widget_search input[type="search"] {
 	box-sizing: border-box;
-	width: 100%;
+	width: 85%;
 	padding: .5em 1em;
 	border: 1px solid #c3c3c3;
 	border-radius: 0;
