@@ -35,7 +35,7 @@
 					<?php the_header_image_tag(); ?>
 				</figure>
 			<?php endif; ?>
-
+		<div class="header-wrapper">
 			<div class="site-branding">
 				<?php the_custom_logo(); ?>
 
@@ -71,7 +71,7 @@
 					<?php esc_html_e( 'Menu', 'wprig' ); ?>
 				</button>
 			</div><!-- .searchmenuwrapper -->
-
+</div> <!-- .headerwrapper -->
 		</header><!-- #masthead -->
 
 

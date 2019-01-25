@@ -780,15 +780,20 @@ textarea {
 # Header
 --------------------------------------------------------------*/
 .site-header {
+	border-bottom: 1px solid #d7d7d7;
+	height: 80px;
+	padding: 0.5rem;
+	background: white;
+	z-index: 100;
+}
+.header-wrapper {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-flow: row nowrap;
-	padding: 0.5rem;
-	border-bottom: 1px solid #d7d7d7;
-	height: 80px;
-	background: white;
-	z-index: 100;
+	max-width: calc(var(--content-width) * 16)px; /* Fallback for older browsers. */
+	max-width: var(--content-width)rem;
+	margin: 0 auto;
 }
 
 .site-branding {
@@ -912,9 +917,6 @@ textarea {
 }
 @media (--sidebar-query) {
 
-.site-header {
-	justify-content: center;
-}
 
 .site-description {
 	flex-direction: column;
@@ -977,7 +979,7 @@ textarea {
 }
 
 .reveal .menu-toggle {
-	z-index: 9999;
+	z-index: 10;
 }
 
 .main-navigation a {

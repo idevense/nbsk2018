@@ -29,9 +29,18 @@
 		padding-left: 1.5rem;
 	 	flex: 1 100%;
 }
-	.excerptwrap-heading h4 {
-		margin: 0;
-		border-bottom: 1px solid #939598;
+	.excerpt-section h4 {
+		margin-bottom: 0;
+	}
+	.posted-on {
+		font-size: 80%;
+	}
+	.posted-title {
+		text-transform: uppercase;
+	}
+	.excerptwrap-heading h3 {
+		margin-bottom: 0;
+		border-bottom: 1px solid #c3c3c3;
 	}
  @media (--sidebar-query) {
 

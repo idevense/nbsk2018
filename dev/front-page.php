@@ -31,14 +31,15 @@ wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If thi
 
 	<div class="excerptwrap">
 	<div class="excerptwrap-heading">
-		<h4>Aktuelt fra nbsk</h4>
+		<h3>Aktuelt fra nbsk</h3>
 	</div>
 	<?php // Display blog posts on any page @ https://m0n.co/l
 		$temp = $wp_query; $wp_query= null;
 		$wp_query = new WP_Query(); $wp_query->query('posts_per_page=3' . '&paged='.$paged);
 		while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 		<section class="excerpt-section">
-		<h3><a href="<?php the_permalink(); ?>" title="Read more"><?php the_title(); ?></a></h3>
+		<h4><a class="posted-title" href="<?php the_permalink(); ?>" title="Read more"><?php the_title(); ?></a></h4>
+		<div class="posted-on">Publisert <?php the_time('F j, Y') ?> </div>
 		<?php the_excerpt(); ?>
 		</section>
 		<?php endwhile; ?>
