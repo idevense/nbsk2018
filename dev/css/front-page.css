@@ -1,14 +1,29 @@
 /**
  * Custom styles for the front-page.php template.
  */
+	.postimage {
+		margin: 0;
+		padding: 40px 1% 30px;
+		position: relative;
+		width: 100%;
+		height: auto;
+		background: rgba(51, 102, 58, 0.7);
+	}
+	.postimage-content {
+		margin: 0 auto;
+		text-align: center;
+	}
 
+	.postimage-content h1 {
+		color: aliceblue;
+	}
 	.excerpt-section {
 
 		padding-right: 24px;
 		padding-right: 1.5rem;
 		padding-left: 24px;
 		padding-left: 1.5rem;
-		flex: 0 0 20em;
+		flex: 0 0 50%;
 }
 
  	.excerptwrap {
@@ -41,6 +56,17 @@
 	.excerptwrap-heading h3 {
 		margin-bottom: 0;
 		border-bottom: 1px solid #c3c3c3;
+	}
+	.excerptwrap-footer {
+		display: flex;
+		flex-flow: row nowrap;
+		margin: 0 auto 20px auto;
+		flex: 1 100%;
+		padding-right: 24px;
+		padding-right: 1.5rem;
+		padding-left: 24px;
+		padding-left: 1.5rem;
+
 	}
  @media (--sidebar-query) {
 

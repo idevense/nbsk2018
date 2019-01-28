@@ -18,6 +18,11 @@ wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If thi
 
 ?>
 	<main id="primary" class="site-main">
+		<div class="postimage">
+			<div class="postimage-content">
+				<h1> Something something dark side </h1>
+</div>
+	</div>
 
 		<?php
 		while ( have_posts() ) :
@@ -45,7 +50,7 @@ wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If thi
 		<?php endwhile; ?>
 
 		<?php wp_reset_postdata(); ?>
-		<div >
+		<div class="excerptwrap-footer" >
 			<a class="button" href="#"> Nyhetsarkiv </a>
 	</div>
 	</div>
