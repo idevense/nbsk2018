@@ -53,7 +53,7 @@ function initMainNavigation() {
 			dropdown.classList.add( 'dropdown' );
 
 			const dropdownSymbol = document.createElement( 'i' );
-			dropdownSymbol.classList.add( 'dropdown-symbol' );
+			dropdownSymbol.classList.add( 'fas fa-plus-circle' );
 			dropdown.appendChild( dropdownSymbol );
 
 			// Add before submenu.

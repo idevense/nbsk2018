@@ -912,20 +912,9 @@ textarea {
 
 .site-search {
 	margin: auto;
-}
-
-}
-@media (--sidebar-query) {
-
-
-.site-description {
-	flex-direction: column;
-	justify-content: flex-end;
-}
-
-.site-search {
 	display: none;
 }
+
 .site-headersearch {
 	display: inline-block;
 	padding: 15px 15px;
@@ -955,15 +944,21 @@ textarea {
 
 }
 }
+@media (--sidebar-query) {
+	.site-description {
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+}
+
 /*--------------------------------------------------------------
 ## Main navigation menu
 --------------------------------------------------------------*/
+/*
 .main-navigation {
 	clear: both;
 	display: block;
-	/*margin: 0 auto 2em;*/
 	padding: 0 1em;
-	/*max-width: var(--content-width)rem;*/
 	font-family: var(--highlight-font-family);
 }
 
@@ -1140,13 +1135,14 @@ textarea {
 	 * supporting browsers (all but IE/Edge) for no-JS context
 	 * (e.g. AMP) See https://caniuse.com/#feat=css-focus-within
 	 */
+	 /*
 	.main-navigation li:hover > ul,
 	.main-navigation li.toggled-on > ul,
 	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
 	.main-navigation:not(.has-dropdown-toggle) li:focus-within > ul {
 		display: block;
 	}
-}
+/*}
 /*
 @media (--sidebar-query) {
 
@@ -1203,6 +1199,7 @@ textarea {
 .site-footer {
 	display: flex;
 	flex-flow: column;
+	width: 100%;
 	flex-shrink: 0;
 	margin: 0 auto;
 	padding: 2em 2em;
@@ -1305,13 +1302,13 @@ border-top: 1px solid #939598;
 	text-align: left;
 }
 .footer-firmainfo {
-	overflow-x: hidden;
+	overflow: hidden;
 	padding: 0 15px;
 }
 
 .footer-section-menu {
-	overflow-x: hidden;
-	width: 25%;
+	overflow: hidden;
+	width: 33.33%;
 	padding: 0 15px;
 	border-right: 1px solid #939598;
 	border-left: 1px solid #939598;
@@ -1325,6 +1322,11 @@ border-top: 1px solid #939598;
 }
 
 } /*end wide qery footer*/
+@media (--sidebar-query) {
+	.site-footer {
+		max-width: 100%;
+	}
+}
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/

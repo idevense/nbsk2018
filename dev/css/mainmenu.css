@@ -1,0 +1,10 @@
+.main-navigation ul {
+	margin: 0;
+	padding: 0;
+	display: flex; }
+
+.main-navigation ul li {
+	list-style: none;
+	position: relative; }
+
+/*# sourceMappingURL=../../maps/dev/css/mainmenu.css.map */

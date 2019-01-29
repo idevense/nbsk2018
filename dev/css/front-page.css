@@ -2,6 +2,7 @@
  * Custom styles for the front-page.php template.
  */
 	.postimage {
+		opacity: 1;
 		margin: 0;
 		padding: 40px 1% 30px;
 		position: relative;
@@ -12,7 +13,11 @@
 	.postimage-content {
 		margin: 0 auto;
 		text-align: center;
+		overflow: hidden;
+		white-space: nowrap;
+		transition: opacity 1000ms cubic-bezier(.33,0,.2,1);
 	}
+
 
 	.postimage-content h1 {
 		color: aliceblue;

@@ -335,6 +335,9 @@ function wprig_styles() {
 	// Enqueue main stylesheet.
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
 
+	// Enqueue menu sass stylesheet
+	wp_enqueue_style( 'mainmenu-style', get_theme_file_uri( '/css/mainmenu.css' ), array(), '20192801');
+
 	// Enqueue FontAwesome.
 	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
 
