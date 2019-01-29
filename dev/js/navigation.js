@@ -10,23 +10,28 @@ const SITENAV = document.querySelector( '.main-navigation' ),
 		TAB: 9
 	};
 
+// Initiate the menus when the DOM loads.
+document.addEventListener( 'DOMContentLoaded', function() {
+	initMainNavigation();
+	initMenuToggle();
+	initSearchToggle();
+});
+
+
 /**
- * var for the -site-header
+ * var for the body
  */
-const SITEHEADER = document.querySelector( '.site-header' );
-
- // var for .site reveal class
-const SITE = document.querySelector( '.site' );
-
 const BODDY = document.getElementsByTagName( 'BODY' )[0];
+const SITEHEADER = document.querySelector( '.site-header' );
 
 /**
  * Initiate the main navigation script.
  */
+
 function initMainNavigation() {
 
 	// No point if no site nav.
-	if ( undefined === SITENAV ) {
+	if ( ! SITENAV ) {
 		return;
 	}
 
@@ -115,8 +120,6 @@ function initMainNavigation() {
 
 }
 
-initMainNavigation();
-
 /**
  * Initiate the mobile menu SEARCH button.
  */
@@ -132,12 +135,9 @@ function initSearchToggle() {
 	SEARCHTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	SEARCHTOGGLE.addEventListener( 'click', function() {
-		SITE.classList.toggle( 'search-is-open' ),
 		BODDY.classList.toggle( 'search-is-open' );
 	}, false );
 }
-
-initSearchToggle();
 
 /**
  * Initiate the mobile menu toggle button.
@@ -155,13 +155,10 @@ function initMenuToggle() {
 
 	MENUTOGGLE.addEventListener( 'click', function() {
 		MENUTOGGLE.classList.toggle( 'is-active' );
-		SITE.classList.toggle( 'reveal' );
 		SITENAV.classList.toggle( 'toggled-on' );
 		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
 	}, false );
 }
-
-initMenuToggle();
 
 /**
  * Toggle submenus open and closed, and tell screen readers what's going on.

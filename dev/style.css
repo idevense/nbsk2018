@@ -780,11 +780,16 @@ textarea {
 # Header
 --------------------------------------------------------------*/
 .site-header {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
 	border-bottom: 1px solid #d7d7d7;
-	height: 80px;
+	height: var(--nav-height)px;
 	padding: 0.5rem;
 	background: white;
-	z-index: 100;
+	z-index: 1000;
+
 }
 .header-wrapper {
 	display: flex;
@@ -794,6 +799,7 @@ textarea {
 	max-width: calc(var(--content-width) * 16)px; /* Fallback for older browsers. */
 	max-width: var(--content-width)rem;
 	margin: 0 auto;
+	flex-shrink: 0;
 }
 
 .site-branding {

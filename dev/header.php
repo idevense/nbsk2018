@@ -71,11 +71,8 @@
 					<?php esc_html_e( 'Menu', 'wprig' ); ?>
 				</button>
 			</div><!-- .searchmenuwrapper -->
-</div> <!-- .headerwrapper -->
-		</header><!-- #masthead -->
-
-
-<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
+		</div> <!-- .headerwrapper -->
+		<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'wprig' ); ?>"
 				<?php if ( wprig_is_amp() ) : ?>
 					[class]=" siteNavigationMenu.expanded ? 'main-navigation toggled-on' : 'main-navigation' "
 				<?php endif; ?>
@@ -110,3 +107,8 @@
 				</div>
 
 			</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+
+
+
