@@ -161,11 +161,11 @@ msgstr ""
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:366
+#: functions.php:369
 msgid "Expand child menu"
 msgstr ""
 
-#: functions.php:367
+#: functions.php:370
 msgid "Collapse child menu"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: header.php:78
+#: header.php:75
 msgid "Main menu"
 msgstr ""
 

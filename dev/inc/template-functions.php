@@ -158,7 +158,7 @@ function wprig_add_primary_menu_dropdown_symbol( $item_output, $item, $depth, $a
 
 	// Add the dropdown for items that have children.
 	if ( ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes ) ) {
-		return $item_output . '<span class="dropdown"><i class="dropdown-symbol"></i></span>';
+		return $item_output . '<span class="dropdown"><i class="fas fa-circle-plus"></i></span>';
 	}
 
 	return $item_output;

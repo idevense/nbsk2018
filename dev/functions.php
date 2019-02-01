@@ -363,12 +363,12 @@ function wprig_scripts() {
 	}
 
 	// Enqueue the navigation script.
-	wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
-	wp_script_add_data( 'wprig-navigation', 'defer', true );
-	wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
-		'expand'   => __( 'Expand child menu', 'wprig' ),
-		'collapse' => __( 'Collapse child menu', 'wprig' ),
-	));
+	//wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
+	//wp_script_add_data( 'wprig-navigation', 'defer', true );
+	//wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
+//		'expand'   => __( 'Expand child menu', 'wprig' ),
+//		'collapse' => __( 'Collapse child menu', 'wprig' ),
+//	));
 
 	// Enqueue skip-link-focus script.
 	wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );
@@ -420,3 +420,9 @@ require get_template_directory() . '/inc/customizer.php';
  * @link https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/
  */
 require get_template_directory() . '/pluggable/lazyload/lazyload.php';
+
+/**
+ * Custom nav walker for our sub menus
+ */
+require get_template_directory() . '/inc/custom-walker.php';
+

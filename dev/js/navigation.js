@@ -14,7 +14,6 @@ const SITENAV = document.querySelector( '.main-navigation' ),
 document.addEventListener( 'DOMContentLoaded', function() {
 	initMainNavigation();
 	initMenuToggle();
-	initSearchToggle();
 });
 
 
@@ -58,11 +57,11 @@ function initMainNavigation() {
 			dropdown.classList.add( 'dropdown' );
 
 			const dropdownSymbol = document.createElement( 'i' );
-			dropdownSymbol.classList.add( 'fas fa-plus-circle' );
+			dropdownSymbol.classList.add( 'dropdown-symbol' );
 			dropdown.appendChild( dropdownSymbol );
 
 			// Add before submenu.
-			submenu.parentNode.insertBefore( dropdown, submenu );
+			parentMenuItem.insertBefore( dropdown, submenu );
 
 		}
 
