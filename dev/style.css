@@ -452,21 +452,20 @@ body.search-is-open .site-search {
 	display: block;
 }
 @media (--sidebar-query) {
-	.has-sidebar .site {
+	body.has-sidebar .site {
 
 		display: grid;
 		justify-content: center;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 15em 3fr 1fr;
 		grid-template-areas:
-		"header header"
-		"nav nav"
-		"main sidebar"
-		"footer footer";
-	}
-	.has-sidebar .site-footer {
-		max-width: 100%;
+		"header header header"
+		"nav main sidebar"
+		"nav footer footer";
 	}
 
+	body.has-sidebar .site-footer {
+		max-width: 100%;
+	}
 	.site-header {
 		grid-area: header;
 	}
@@ -616,7 +615,8 @@ body {
 	background: #fff;
 	height: 100%;
 	width: 100%;
-	/* Fallback for when there is no custom background color defined. */ }
+	/* Fallback for when there is no custom background color defined. */
+}
 
 blockquote, q {
 	quotes: "" "";
@@ -1214,8 +1214,8 @@ textarea {
 	padding: 2em 2em;
 	font-family: var(--highlight-font-family);
 	font-size: var(--regular-font-size)px;
-	background-color:#303030;
-	color: #939598;
+	background-color: var(--footer-bg-color);
+	color: var(--footer-font-color);
 	line-height: 1.15;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -1230,12 +1230,12 @@ textarea {
 }
 
 .site-footer a {
-	color: #939598;
+	color: var(--footer-font-color);
 }
 .footer-section-menu {
 	padding-top: 10px;
 	padding-bottom: 15px;
-	border-top: 1px solid #939598;
+	border-top: 1px solid var(--footer-font-color);
 }
 .footer-section-menu p {
 	margin-top: 0;
@@ -1257,7 +1257,7 @@ textarea {
 }
 .footer-social-menu {
 	padding-top: 10px;
-border-top: 1px solid #939598;
+border-top: 1px solid var(--footer-font-color);
 }
 
 .footer-social-menu p {
@@ -1279,7 +1279,7 @@ border-top: 1px solid #939598;
 	margin-right: 0.3em;
 }
 .footer-social-menu ul a {
-	color: #939598;
+	color: var(--footer-font-color);
 	text-decoration: none;
 	font-family: var(--highlight-font-family);
 	font-size: var(--regular-font-size)px;
@@ -1290,7 +1290,7 @@ border-top: 1px solid #939598;
 }
 
 .footer-firmainfo a {
-	color: #939598;
+	color: var(--footer-font-color);
 	text-decoration: none;
 }
 .footer-firmainfo i {
@@ -1319,8 +1319,8 @@ border-top: 1px solid #939598;
 	overflow: hidden;
 	width: 33.33%;
 	padding: 0 15px;
-	border-right: 1px solid #939598;
-	border-left: 1px solid #939598;
+	border-right: 1px solid var(--footer-font-color);
+	border-left: 1px solid var(--footer-font-color);
 	border-top: 0;
 }
 

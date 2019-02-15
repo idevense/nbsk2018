@@ -322,6 +322,15 @@ function wprig_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Widgetarea', 'wprig' ),
+		'id'            => 'page-widget-1',
+		'description'   => esc_html__( 'Add widgets here.', 'wprig' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'wprig_widgets_init' );
 
@@ -338,10 +347,16 @@ function wprig_styles() {
 	// Enqueue menu sass stylesheet
 	wp_enqueue_style( 'mainmenu-style', get_theme_file_uri( '/css/mainmenu.css' ), array(), '20192801');
 
+	// Enqueue custom widgets sass stylesheet
+	wp_enqueue_style( 'customwidget-style', get_theme_file_uri( '/css/customwidgets.css' ), array(), '20192801');
 	// Enqueue FontAwesome.
 	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
 
+	// Enqueue Hamburger toggle styling
 	wp_enqueue_style( 'load-hamburgers', get_theme_file_uri( '/css/hamburgers.css' ) , array(), '20180514' );
+
+	// Enqueue SlickNav styling
+	//wp_enqueue_style( 'load-slicknav', get_theme_file_uri( '/css/slicknav.css' ) , array(), '20180514' );
 
 	// Register component styles that are printed as needed.
 	wp_register_style( 'wprig-comments', get_theme_file_uri( '/css/comments.css' ), array(), '20180514' );
@@ -363,12 +378,15 @@ function wprig_scripts() {
 	}
 
 	// Enqueue the navigation script.
-	//wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
-	//wp_script_add_data( 'wprig-navigation', 'defer', true );
-	//wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
-//		'expand'   => __( 'Expand child menu', 'wprig' ),
-//		'collapse' => __( 'Collapse child menu', 'wprig' ),
-//	));
+	wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
+	wp_script_add_data( 'wprig-navigation', 'defer', true );
+	wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
+		'expand'   => __( 'Expand child menu', 'wprig' ),
+		'collapse' => __( 'Collapse child menu', 'wprig' ),
+	));
+	//enqueue slicknav js
+	//wp_enqueue_script( 'mobilenav-slickjs', get_template_directory_uri() . '/js/jquery.slicknav.js', array('jquery') );
+	//wp_enqueue_script( 'mobilenav-init', get_template_directory_uri() . '/js/menuloader.js', array('jquery') );
 
 	// Enqueue skip-link-focus script.
 	wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );

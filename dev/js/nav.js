@@ -1,10 +1,10 @@
 /**
- * File navigation.js.
+ * File nav.js.
  *
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
-const MTOG = document.querySelector( '.searchmenuwrapper' );
+
 const SITENAV = document.querySelector( '.main-navigation' ),
 	KEYMAP = {
 		TAB: 9
@@ -16,9 +16,17 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	initMenuToggle();
 });
 
+
+/**
+ * var for the body
+ */
+const BODDY = document.getElementsByTagName( 'BODY' )[0];
+const SITEHEADER = document.querySelector( '.site-header' );
+
 /**
  * Initiate the main navigation script.
  */
+
 function initMainNavigation() {
 
 	// No point if no site nav.
@@ -34,43 +42,9 @@ function initMainNavigation() {
 		return;
 	}
 
-	// Create the dropdown button.
-	const dropdownButton = getDropdownButton();
-
-	SUBMENUS.forEach( function( submenu ) {
+		SUBMENUS.forEach( function( submenu ) {
 		const parentMenuItem = submenu.parentNode;
-		var dropdown = parentMenuItem.querySelector( '.dropdown' );
-
-		// If no dropdown, create one.
-		if ( ! dropdown ) {
-
-			// Create dropdown.
-			dropdown = document.createElement( 'span' );
-			dropdown.classList.add( 'dropdown' );
-
-			const dropdownSymbol = document.createElement( 'i' );
-			dropdownSymbol.classList.add( 'fas' );
-			dropdownSymbol.classList.add( 'fa-plus-circle' );
-			dropdown.appendChild( dropdownSymbol );
-
-			// Add before submenu.
-			submenu.parentNode.insertBefore( dropdown, submenu );
-
-		}
-
-		// Convert dropdown to button.
-		const thisDropdownButton = dropdownButton.cloneNode( true );
-
-		// Copy contents of dropdown into button.
-		thisDropdownButton.innerHTML = dropdown.innerHTML;
-
-		// Replace dropdown with toggle button.
-		dropdown.parentNode.replaceChild( thisDropdownButton, dropdown );
-
-		// Toggle the submenu when we click the dropdown button.
-		thisDropdownButton.addEventListener( 'click', function( event ) {
-			toggleSubMenu( this.parentNode );
-		});
+		var dropdown = parentMenuItem.querySelector( '.sub-menu' );
 
 		// Clean up the toggle if a mouse takes over from keyboard.
 		parentMenuItem.addEventListener( 'mouseleave', function( event ) {
@@ -91,7 +65,7 @@ function initMainNavigation() {
 			const focusSelector = 'ul.toggle-show > li > a, ul.toggle-show > li > button';
 
 			if ( KEYMAP.TAB === event.keyCode ) {
-				if ( event.shiftKey ) {
+				if ( true === event.shiftKey ) {
 
 					// Means we're tabbing out of the beginning of the submenu.
 					if ( isfirstFocusableElement( this, document.activeElement, focusSelector ) ) {
@@ -113,13 +87,32 @@ function initMainNavigation() {
 }
 
 /**
+ * Initiate the mobile menu SEARCH button.
+ */
+function initSearchToggle() {
+	const SEARCHTOGGLE = SITEHEADER.querySelector( '.search-toggle' );
+
+	// Return early if SEARCHTOGGLE is missing.
+	if ( undefined === SEARCHTOGGLE ) {
+		return;
+	}
+
+	// Add an initial values for the attribute.
+	SEARCHTOGGLE.setAttribute( 'aria-expanded', 'false' );
+
+	SEARCHTOGGLE.addEventListener( 'click', function() {
+		BODDY.classList.toggle( 'search-is-open' );
+	}, false );
+}
+
+/**
  * Initiate the mobile menu toggle button.
  */
 function initMenuToggle() {
-	const MENUTOGGLE = MTOG.querySelector( '.menu-toggle' );
+	const MENUTOGGLE = SITEHEADER.querySelector( '.menu-toggle' );
 
 	// Return early if MENUTOGGLE is missing.
-	if ( ! MENUTOGGLE ) {
+	if ( undefined === MENUTOGGLE ) {
 		return;
 	}
 
@@ -127,6 +120,7 @@ function initMenuToggle() {
 	MENUTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	MENUTOGGLE.addEventListener( 'click', function() {
+		MENUTOGGLE.classList.toggle( 'is-active' );
 		SITENAV.classList.toggle( 'toggled-on' );
 		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
 	}, false );
@@ -136,7 +130,7 @@ function initMenuToggle() {
  * Toggle submenus open and closed, and tell screen readers what's going on.
  */
 function toggleSubMenu( parentMenuItem, forceToggle ) {
-	const toggleButton = parentMenuItem.querySelector( '.dropdown-toggle' ),
+	const toggleButton = parentMenuItem.querySelector( '.submenu-btn' ),
 		subMenu = parentMenuItem.querySelector( 'ul' );
 	var parentMenuItemToggled = parentMenuItem.classList.contains( 'toggled-on' );
 

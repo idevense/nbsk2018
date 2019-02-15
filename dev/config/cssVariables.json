@@ -13,7 +13,8 @@
     "larger-font-size": "48",
     "navwidth": "15em",
     "nav-height": "80px",
-    "menu-hover-background": "$color: #fff, $alpha: 0.2"
+    "footer-bg-color": "#303030",
+    "footer-font-color": "#939598"
 	},
 	"queries": {
 		"narrow-menu-query": "screen and (max-width: 37.5em)",

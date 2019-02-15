@@ -14,8 +14,8 @@
             easingClose: 'swing',
             closedSymbol: '&#9658;',
             openedSymbol: '&#9660;',
-            prependTo: 'body',
-            appendTo: '',
+            prependTo: '',
+            appendTo: '.header-wrapper',
             parentTag: 'a',
             closeOnClick: false,
             allowParentLinks: false,
@@ -274,12 +274,12 @@
                     if (ev.keyCode !== Keyboard.DOWN || !$($this.btn).hasClass(prefix+'_open')){
                         $this._menuToggle();
                     }
-                    
+
                     $($this.btn).next().find('[role="menuitem"]').first().focus();
                     break;
             }
 
-            
+
         });
 
         $this.mobileNav.on('keydown', '.'+prefix+'_item', function(e) {
@@ -337,7 +337,7 @@
                     e.preventDefault();
                     $this._menuToggle();
                     $($this.btn).focus();
-                    break;    
+                    break;
             }
         });
 
@@ -407,7 +407,7 @@
         if (animate) {
             duration = settings.duration;
         }
-        
+
         function afterOpen(trigger, parent) {
             $(trigger).removeClass(prefix+'_animating');
             $(parent).removeClass(prefix+'_animating');
@@ -417,7 +417,7 @@
                 settings.afterOpen(trigger);
             }
         }
-        
+
         function afterClose(trigger, parent) {
             el.attr('aria-hidden','true');
             items.attr('tabindex', '-1');
@@ -470,7 +470,7 @@
                     afterClose(trigger, parent)
                 });
             } else if (settings.animations === 'velocity') {
-                
+
                 el.velocity("finish").velocity("slideUp", {
                     duration: duration,
                     easing: settings.easingClose,

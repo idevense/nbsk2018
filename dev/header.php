@@ -92,7 +92,7 @@
 				<div class="primary-menu-container">
 				<div class="site-search">
 				<?php get_search_form(); ?>
-		</div>
+				</div>
 					<?php
 
 					wp_nav_menu(
@@ -100,7 +100,7 @@
 							'theme_location' => 'primary',
 							'menu_id'        => 'primary-menu',
 							'container'      => 'ul',
-							'walker'         => new idev_Custom_Walker
+							//'walker'         => new idev_Custom_Walker
 						)
 					);
 
