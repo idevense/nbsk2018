@@ -4,14 +4,19 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+const mQuery = window.matchMedia( '(min-width: 37.5em)' );
 const MTOG = document.querySelector( '.searchmenuwrapper' );
 const SITENAV = document.querySelector( '.main-navigation' ),
 	KEYMAP = {
 		TAB: 9
 	};
 
+//eventlistener for statechange mediaquery
+mQuery.addListener( isMenuWide );
+
 // Initiate the menus when the DOM loads.
 document.addEventListener( 'DOMContentLoaded', function() {
+	isMenuWide( mQuery );
 	initMainNavigation();
 	initMenuToggle();
 });
@@ -20,6 +25,10 @@ document.addEventListener( 'DOMContentLoaded', function() {
  * Initiate the main navigation script.
  */
 function initMainNavigation() {
+
+	// new structure based on mediaquery
+//	var colwrapper = document.createElement( 'div' );
+
 
 	// No point if no site nav.
 	if ( ! SITENAV ) {
@@ -214,4 +223,40 @@ function islastFocusableElement( container, element, focusSelector ) {
 		return element === focusableElements[focusableElements.length - 1];
 	}
 	return false;
+}
+
+function isMenuWide( mQuery ) {
+	if ( mQuery.matches ) {
+
+		//create new html structure if mediaquery is true
+
+		const el = SITENAV.querySelector( '#primary-menu' );
+		const elAll = el.querySelectorAll( '.menu-item-has-children' );
+
+		elAll.forEach( function( elem ) {
+			var elemParent = elem.parentNode;
+			var wrapper = document.createElement( 'div' );
+			wrapper.classList.add( 'pewpew' );
+				if ( elemParent == el ) {
+					el.parentNode.insertBefore( wrapper, el );
+					wrapper.appendChild( elem );
+
+		//			console.log ( elemParent, el );
+				}
+		});
+	} else {
+		const el = SITENAV.querySelector( '.primary-menu-container' );
+		const elAll = el.querySelectorAll( 'div.pewpew li' );
+		const target = SITENAV.querySelector( '#primary-menu' );
+
+		if ( ! elAll ) {
+			return;
+			}
+
+		elAll.forEach( function( elem ) {
+			target.appendChild( elem );
+		});
+		const trash = document.querySelectorAll( 'div.pewpew' );
+		trash.remove();
+	}
 }

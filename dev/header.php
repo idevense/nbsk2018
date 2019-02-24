@@ -99,7 +99,6 @@
 						array(
 							'theme_location' => 'primary',
 							'menu_id'        => 'primary-menu',
-							'container'      => 'ul',
 							//'walker'         => new idev_Custom_Walker
 						)
 					);

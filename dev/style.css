@@ -936,23 +936,24 @@ textarea {
 }
 .site-headersearch #s {
 	font-family: var(--highlight-font-family);
-	box-shadow: inset 0px 0px 0 0px #303030;
+	box-shadow: inset 0px 0px 0px 0px #303030;
 	width: 55px;
 	background-color: transparent;
 	border: none;
 	margin-left: 135px;
+	transition: width 0.5s ease-out, box-shadow 0.5s ease-in;
+	-webkit-transition: width 0.5s ease-out, box-shadow 0.5s ease-in;
+
 }
 
 .site-headersearch #s:focus,
 .site-headersearch #s:active {
-	box-shadow: inset 0px 0px 0 1px #303030;
+	box-shadow: inset 0px 0px 0px 1px #303030;
 	width: 180px;
-	transition: width 0.8s;
-	/*transition: 1s width, box-shadow 1s, margin 1s;*/
 	margin-left: 10px;
+}
+} /*wide menu q */
 
-}
-}
 @media (--sidebar-query) {
 	.site-description {
 		flex-direction: column;
