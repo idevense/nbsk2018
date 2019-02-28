@@ -372,11 +372,6 @@ add_action( 'wp_enqueue_scripts', 'wprig_styles' );
  */
 function wprig_scripts() {
 
-	// If the AMP plugin is active, return early.
-	if ( wprig_is_amp() ) {
-		return;
-	}
-
 	// Enqueue the navigation script.
 	wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
 	wp_script_add_data( 'wprig-navigation', 'defer', true );
@@ -384,9 +379,11 @@ function wprig_scripts() {
 		'expand'   => __( 'Expand child menu', 'wprig' ),
 		'collapse' => __( 'Collapse child menu', 'wprig' ),
 	));
-	//enqueue slicknav js
-	//wp_enqueue_script( 'mobilenav-slickjs', get_template_directory_uri() . '/js/jquery.slicknav.js', array('jquery') );
-	//wp_enqueue_script( 'mobilenav-init', get_template_directory_uri() . '/js/menuloader.js', array('jquery') );
+
+	// If the AMP plugin is active, return early.
+	if ( wprig_is_amp() ) {
+		return;
+	}
 
 	// Enqueue skip-link-focus script.
 	wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );

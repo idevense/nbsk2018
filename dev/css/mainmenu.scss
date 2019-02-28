@@ -23,7 +23,7 @@
 	left: 0;
 }
 
-.menu li a {
+#primary-menu li a {
 	color: var(--footer-font-color);
 
 	&:active,
@@ -47,7 +47,7 @@
 
 @media (--narrow-menu-query) {
 
-.menu {
+#primary-menu {
 	//width: 100%;
 	max-width: calc(var(--content-width) * 16)+px;
 	max-width: var(--content-width)+rem;
@@ -55,7 +55,7 @@
 	padding: 0;
 }
 
-.menu li {
+#primary-menu li {
 	border-top: 1px solid var(--footer-font-color);
 	list-style: none;
 	padding: 8px;
@@ -80,7 +80,7 @@ button.dropdown-toggle {
 	padding: 0;
 	}
 
-.menu li.toggled-on button.dropdown-toggle {
+#primary-menu li.toggled-on button.dropdown-toggle {
 	&:active,
 	&:focus,
 	&:hover {
@@ -93,43 +93,57 @@ button.dropdown-toggle {
 @media (--wide-menu-query) {
 
 #primary-menu {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-around;
-	align-items: flex-start;
-/*	max-width: calc(var(--content-width) * 16)+px;
-	max-width: var(--content-width)+rem;*/
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
-	.menu-item-has-children {
-		text-decoration: underline;
-		color: red;
-	}
 	li {
 		padding: 0;
 		margin: 0;
-		/*width: 50%;*/
 		list-style-type: none;
-
-
-		.dropdown-toggle {
-			display: none;
-		}
-	}
-	.sub-menu {
-		margin: 0;
-		padding: 0;
-		li a {
-		text-decoration: none;
-		}
-		.menu-item-has-children {
-			text-decoration: underline;
-			color: greenyellow;
-		}
 	}
 }
 .site-search {
 	display: none;
 }
+.menu-all-pages-container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-content: stretch;
+}
+.column {
+	margin: 0;
+	padding: 0;
+	border-right: 1px solid wheat;
 
+	.dropdown {
+		display: none;
+	}
+	li {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+	}
+	li a {
+	color: var(--footer-font-color);
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	&:active,
+	&:focus,
+	&:hover {
+		color: #fff;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		li a {
+			text-transform: none;
+			font-weight: normal;
+		}
+	}
+}
+button.dropdown-toggle {
+	display:none;
+}
 }//end wide-menu-query

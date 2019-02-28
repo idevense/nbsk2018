@@ -20,9 +20,9 @@
 .main-navigation.toggled-on {
 	left: 0; }
 
-.menu li a {
+#primary-menu li a {
 	color: var(--footer-font-color); }
-	.menu li a:active, .menu li a:focus, .menu li a:hover {
+	#primary-menu li a:active, #primary-menu li a:focus, #primary-menu li a:hover {
 		color: #fff; }
 
 .site-search {
@@ -36,12 +36,12 @@
 		width: 100%; }
 
 @media (--narrow-menu-query) {
-	.menu {
+	#primary-menu {
 		max-width: calc(var(--content-width) * 16)px;
 		max-width: var(--content-width)rem;
 		margin: 0 auto;
 		padding: 0; }
-	.menu li {
+	#primary-menu li {
 		border-top: 1px solid var(--footer-font-color);
 		list-style: none;
 		padding: 8px;
@@ -58,38 +58,48 @@
 		float: right;
 		font-size: 1em;
 		padding: 0; }
-	.menu li.toggled-on button.dropdown-toggle:active, .menu li.toggled-on button.dropdown-toggle:focus, .menu li.toggled-on button.dropdown-toggle:hover {
+	#primary-menu li.toggled-on button.dropdown-toggle:active, #primary-menu li.toggled-on button.dropdown-toggle:focus, #primary-menu li.toggled-on button.dropdown-toggle:hover {
 		color: #fff; } }
 
 @media (--wide-menu-query) {
 	#primary-menu {
-		display: flex;
-		flex-flow: row nowrap;
-		justify-content: space-around;
-		align-items: flex-start;
-		/*	max-width: calc(var(--content-width) * 16)+px;
-	max-width: var(--content-width)+rem;*/
-		margin: 0 auto;
+		margin: 0;
 		padding: 0; }
-		#primary-menu .menu-item-has-children {
-			text-decoration: underline;
-			color: red; }
 		#primary-menu li {
 			padding: 0;
 			margin: 0;
-			/*width: 50%;*/
 			list-style-type: none; }
-			#primary-menu li .dropdown-toggle {
-				display: none; }
-		#primary-menu .sub-menu {
+	.site-search {
+		display: none; }
+	.menu-all-pages-container {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+		align-content: stretch; }
+	.column {
+		margin: 0;
+		padding: 0;
+		border-right: 1px solid wheat; }
+		.column .dropdown {
+			display: none; }
+		.column li {
+			padding: 0;
+			margin: 0;
+			list-style-type: none; }
+		.column li a {
+			color: var(--footer-font-color);
+			text-transform: uppercase;
+			text-decoration: none;
+			font-weight: bold; }
+			.column li a:active, .column li a:focus, .column li a:hover {
+				color: #fff; }
+		.column ul {
 			margin: 0;
 			padding: 0; }
-			#primary-menu .sub-menu li a {
-				text-decoration: none; }
-			#primary-menu .sub-menu .menu-item-has-children {
-				text-decoration: underline;
-				color: greenyellow; }
-	.site-search {
+			.column ul li a {
+				text-transform: none;
+				font-weight: normal; }
+	button.dropdown-toggle {
 		display: none; } }
 
 /*# sourceMappingURL=../../maps/dev/css/mainmenu.css.map */

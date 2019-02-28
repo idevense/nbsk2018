@@ -16,6 +16,7 @@ mQuery.addListener( isMenuWide );
 
 // Initiate the menus when the DOM loads.
 document.addEventListener( 'DOMContentLoaded', function() {
+	console.log( 'trigger' );
 	isMenuWide( mQuery );
 	initMainNavigation();
 	initMenuToggle();
@@ -25,10 +26,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
  * Initiate the main navigation script.
  */
 function initMainNavigation() {
-
-	// new structure based on mediaquery
-//	var colwrapper = document.createElement( 'div' );
-
 
 	// No point if no site nav.
 	if ( ! SITENAV ) {
@@ -40,6 +37,7 @@ function initMainNavigation() {
 
 	// No point if no submenus.
 	if ( ! SUBMENUS.length ) {
+		console.log( 'no subs man, no subs' );
 		return;
 	}
 
@@ -52,6 +50,7 @@ function initMainNavigation() {
 
 		// If no dropdown, create one.
 		if ( ! dropdown ) {
+			console.log( 'no dropdown triggered' );
 
 			// Create dropdown.
 			dropdown = document.createElement( 'span' );
@@ -198,6 +197,7 @@ function getDropdownButton() {
 	dropdownButton.classList.add( 'dropdown-toggle' );
 	dropdownButton.setAttribute( 'aria-expanded', 'false' );
 	dropdownButton.setAttribute( 'aria-label', wprigScreenReaderText.expand );
+	console.log( dropdownButton );
 	return dropdownButton;
 }
 
@@ -226,37 +226,49 @@ function islastFocusableElement( container, element, focusSelector ) {
 }
 
 function isMenuWide( mQuery ) {
+	const pmenu = SITENAV.querySelector( '#primary-menu' );
+	const pelem = pmenu.querySelectorAll( '.menu-item-has-children' );
+	const menuwrapper = SITENAV.querySelector( '.menu-all-pages-container' );
+
 	if ( mQuery.matches ) {
 
-		//create new html structure if mediaquery is true
+		// create structure if mediaquery is true
+			pelem.forEach( function( elem ) {
+				var elemParent = elem.parentNode;
 
-		const el = SITENAV.querySelector( '#primary-menu' );
-		const elAll = el.querySelectorAll( '.menu-item-has-children' );
-
-		elAll.forEach( function( elem ) {
-			var elemParent = elem.parentNode;
-			var wrapper = document.createElement( 'div' );
-			wrapper.classList.add( 'pewpew' );
-				if ( elemParent == el ) {
-					el.parentNode.insertBefore( wrapper, el );
-					wrapper.appendChild( elem );
-
-		//			console.log ( elemParent, el );
+				if ( elemParent === pmenu ) {
+					const wrapper = document.createElement( 'div' );
+					wrapper.classList.add( 'column' );
+					pmenu.parentNode.insertBefore( wrapper, pmenu );
+					const innerwrapper = document.createElement( 'ul' );
+					innerwrapper.classList.add( 'menu' );
+					wrapper.appendChild( innerwrapper );
+					innerwrapper.appendChild( elem );
 				}
-		});
-	} else {
-		const el = SITENAV.querySelector( '.primary-menu-container' );
-		const elAll = el.querySelectorAll( 'div.pewpew li' );
-		const target = SITENAV.querySelector( '#primary-menu' );
+			});
 
-		if ( ! elAll ) {
-			return;
-			}
+		} else {
+			const tmpdiv = menuwrapper.querySelectorAll( '.column' );
+			const tmpul = menuwrapper.querySelectorAll( '.menu ul' );
+			const colelem = SITENAV.querySelectorAll( '.menu-item-has-children' );
 
-		elAll.forEach( function( elem ) {
-			target.appendChild( elem );
-		});
-		const trash = document.querySelectorAll( 'div.pewpew' );
-		trash.remove();
-	}
+			//if there are no elements with class .column we exit
+			if ( 0 === tmpdiv.length ) {
+				return;
+				}
+
+				colelem.forEach( function( elem ) {
+					var epar = elem.parentElement.parentElement;
+					console.log ( epar );
+					if ( 'column' === epar.className ) {
+						pmenu.appendChild( elem );
+						}
+				});
+
+		//we clean up empty div containers
+		const trash = document.querySelectorAll( 'div.column' );
+		trash.forEach( function( x ) {
+			x.remove();
+			});
+		}
 }
