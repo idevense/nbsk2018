@@ -17,10 +17,10 @@ function wprig_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
-	if ( is_active_sidebar( 'sidebar-1' ) ) {
+	if ( is_active_sidebar( 'sidebar-1' ) xor is_active_sidebar( 'page-widget-1' )) {
 		global $template;
 
-		if ( 'front-page.php' !== basename( $template ) && 'nosidebar-page.php' !== basename( $template )) {
+		if ( 'front-page.php' !== basename( $template ) && 'nosidebar-page.php' !== basename( $template ) && 'widgetized-page.php' !== basename ( $template )) {
 			$classes[] = 'has-sidebar';
 		}
 

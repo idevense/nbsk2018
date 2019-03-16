@@ -15,8 +15,7 @@
 
 
 		<div class="footer-firmainfo">
-			<p>
-			<strong>Norges brannskole</strong><br><p>
+			<p class="footer-menu-heading">Norges brannskole<p>
 				<p>
 				Erling Johannessens vei 1<br>
 				9441 Fjelldal<br>
@@ -31,7 +30,7 @@
 		</div>
 
 		<nav id="footer-section-menu" class="footer-section-menu" role="navigation">
-			<p><strong>Menyoverskrift</strong></p>
+			<p class="footer-menu-heading">Menyoverskrift</p>
 			<?php
 				wp_nav_menu(
 					array(
@@ -43,7 +42,7 @@
 		</nav>
 
 		<nav id="footer-social-menu" class="footer-social-menu" role="navigation">
-			<p><strong>Følg oss</strong></p>
+			<p class="footer-menu-heading">Følg oss</p>
 			<?php
 				wp_nav_menu(
 					array(

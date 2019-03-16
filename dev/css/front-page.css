@@ -1,6 +1,10 @@
 /**
  * Custom styles for the front-page.php template.
  */
+	.site-footer {
+		max-width: calc(var(--content-width) * 16)px; /* Fallback for older browsers. */
+		max-width: var(--content-width)rem;
+	}
 	.postimage {
 		opacity: 1;
 		margin: 0;
@@ -23,12 +27,10 @@
 		color: aliceblue;
 	}
 	.excerpt-section {
-
 		padding-right: 24px;
 		padding-right: 1.5rem;
 		padding-left: 24px;
 		padding-left: 1.5rem;
-		flex: 0 0 50%;
 }
 
  	.excerptwrap {
@@ -74,6 +76,10 @@
 
 	}
  @media (--sidebar-query) {
+
+	.excerpt-section {
+		flex: 0 0 50%;
+	}
 
 	.post {
 		margin-bottom: 0;

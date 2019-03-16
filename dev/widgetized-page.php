@@ -27,7 +27,7 @@ get_header(); ?>
 			 */
 			wp_print_styles( array( 'wprig-content' ) ); // Note: If this was already done it will be skipped.
 
-			get_template_part( 'template-parts/content', 'custompage' );
+			get_template_part( 'template-parts/content', 'menupage' );
 
 		endwhile; // End of the loop.
 		?>

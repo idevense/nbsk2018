@@ -16,10 +16,10 @@ mQuery.addListener( isMenuWide );
 
 // Initiate the menus when the DOM loads.
 document.addEventListener( 'DOMContentLoaded', function() {
-	console.log( 'trigger' );
 	isMenuWide( mQuery );
 	initMainNavigation();
 	initMenuToggle();
+	noscroll();
 });
 
 /**
@@ -50,7 +50,6 @@ function initMainNavigation() {
 
 		// If no dropdown, create one.
 		if ( ! dropdown ) {
-			console.log( 'no dropdown triggered' );
 
 			// Create dropdown.
 			dropdown = document.createElement( 'span' );
@@ -136,8 +135,30 @@ function initMenuToggle() {
 
 	MENUTOGGLE.addEventListener( 'click', function() {
 		SITENAV.classList.toggle( 'toggled-on' );
+		MENUTOGGLE.classList.toggle( 'is-active' );
 		this.setAttribute( 'aria-expanded', 'false' === this.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
 	}, false );
+}
+
+/**
+ * Disable Scrolling when menu is open
+ */
+function noscroll() {
+	var docbody = document.body;
+	const MENUTOGGLE = MTOG.querySelector( '.menu-toggle' );
+
+	// Return early if MENUTOGGLE is missing.
+	if ( ! MENUTOGGLE ) {
+		return;
+	}
+
+	MENUTOGGLE.addEventListener( 'click', function() {
+		if ( SITENAV.classList.contains( 'toggled-on' ) ) {
+			docbody.style.overflow = 'hidden';
+		} else {
+			docbody.style.overflow = 'auto';
+		}
+	});
 }
 
 /**
@@ -197,7 +218,6 @@ function getDropdownButton() {
 	dropdownButton.classList.add( 'dropdown-toggle' );
 	dropdownButton.setAttribute( 'aria-expanded', 'false' );
 	dropdownButton.setAttribute( 'aria-label', wprigScreenReaderText.expand );
-	console.log( dropdownButton );
 	return dropdownButton;
 }
 
@@ -244,7 +264,7 @@ function isMenuWide( mQuery ) {
 					innerwrapper.classList.add( 'menu' );
 					wrapper.appendChild( innerwrapper );
 					innerwrapper.appendChild( elem );
-				}
+					}
 			});
 
 		} else {
@@ -259,7 +279,7 @@ function isMenuWide( mQuery ) {
 
 				colelem.forEach( function( elem ) {
 					var epar = elem.parentElement.parentElement;
-					console.log ( epar );
+
 					if ( 'column' === epar.className ) {
 						pmenu.appendChild( elem );
 						}
