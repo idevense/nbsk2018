@@ -37,7 +37,6 @@ function initMainNavigation() {
 
 	// No point if no submenus.
 	if ( ! SUBMENUS.length ) {
-		console.log( 'no subs man, no subs' );
 		return;
 	}
 
@@ -248,17 +247,18 @@ function islastFocusableElement( container, element, focusSelector ) {
 function isMenuWide( mQuery ) {
 	const pmenu = SITENAV.querySelector( '#primary-menu' );
 	const pelem = pmenu.querySelectorAll( '.menu-item-has-children' );
-	const menuwrapper = SITENAV.querySelector( '.menu-all-pages-container' );
+	const menuwrapper = SITENAV.querySelector( '.primary-menu-wrapper' );
+	const menucontainer = SITENAV.querySelector( '.primary-menu-container' );
 
 	if ( mQuery.matches ) {
 
 		// create structure if mediaquery is true
-			pelem.forEach( function( elem ) {
+			pelem.forEach( function( elem, index ) {
 				var elemParent = elem.parentNode;
 
 				if ( elemParent === pmenu ) {
 					const wrapper = document.createElement( 'div' );
-					wrapper.classList.add( 'column' );
+					wrapper.classList.add( 'column', 'column' + ++index );
 					pmenu.parentNode.insertBefore( wrapper, pmenu );
 					const innerwrapper = document.createElement( 'ul' );
 					innerwrapper.classList.add( 'menu' );
@@ -268,22 +268,37 @@ function isMenuWide( mQuery ) {
 			});
 
 		} else {
-			const tmpdiv = menuwrapper.querySelectorAll( '.column' );
-			const tmpul = menuwrapper.querySelectorAll( '.menu ul' );
-			const colelem = SITENAV.querySelectorAll( '.menu-item-has-children' );
+			const tmpdiv = menucontainer.querySelectorAll( 'div.column' );
 
 			//if there are no elements with class .column we exit
 			if ( 0 === tmpdiv.length ) {
 				return;
 				}
+				const colelem = menucontainer.querySelectorAll( 'li.menu-item-has-children' );
+				colelem.forEach( function( elem ) {
+					var elemParent = elem.parentNode;
+					var epar = elem.parentElement;
 
+					if ( elemParent === pmenu ) {
+						return;
+					} else {
+						console.log( epar.className );
+						if ( 'menu' == epar.className ) {
+							pmenu.appendChild( elem );
+						}
+					}
+				});
+
+				//console.log( divpar );
+
+				/*
 				colelem.forEach( function( elem ) {
 					var epar = elem.parentElement.parentElement;
-
+					//console.log( epar );
 					if ( 'column' === epar.className ) {
-						pmenu.appendChild( elem );
+
 						}
-				});
+				});*/
 
 		//we clean up empty div containers
 		const trash = document.querySelectorAll( 'div.column' );

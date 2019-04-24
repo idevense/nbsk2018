@@ -68,7 +68,7 @@
 				<span class="hamburger-box">
     				<span class="hamburger-inner"></span>
   				</span>
-					<?php esc_html_e( 'Menu', 'wprig' ); ?>
+					<?php esc_html_e( 'MENY', 'wprig' ); ?>
 				</button>
 			</div><!-- .searchmenuwrapper -->
 		</div> <!-- .headerwrapper -->
@@ -89,7 +89,7 @@
 
 
 
-				<div class="primary-menu-container">
+				<div class="primary-menu-wrapper">
 				<div class="site-search">
 				<?php get_search_form(); ?>
 				</div>
@@ -99,6 +99,8 @@
 						array(
 							'theme_location' => 'primary',
 							'menu_id'        => 'primary-menu',
+							'container_class'=> 'primary-menu-container',
+							'menu_class'     => 'column menu',
 							//'walker'         => new idev_Custom_Walker
 						)
 					);

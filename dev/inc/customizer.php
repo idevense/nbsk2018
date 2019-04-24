@@ -62,6 +62,51 @@ function wprig_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	$wp_customize->add_section(
+		'frontpage_options', array(
+			'title'        => __( 'Frontpage Options', 'wprig' ),
+			'priority'     => 20,
+			'capability'   => 'edit_theme_options',
+			'description'  => __( 'Allows you to select what page that will be linked in frontpage adblock' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'frontpage_dropdown_page', array(
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_control(
+		'frontpage_dropdown_page', array(
+		'label'       => __( 'Select Page to Link', 'wprig' ),
+		'section'     => 'frontpage_options',
+		'priority'    => 20,
+		'settings'    => 'frontpage_dropdown_page',
+		'type'        => 'dropdown-pages',
+		)
+	);
+
+
+	$wp_customize->add_setting(
+		'frontpage_dropdown_text', array(
+			'default'             => '',
+			'transport'           => 'refresh',
+			'sanitize_callback'   => 'wp_filter_nohtml_kses',
+			)
+		);
+
+		$wp_customize->add_control(
+			'frontpage_dropdown_text', array(
+			'label'               => __( 'Type in Text for Link', 'wprig' ),
+			'section'   => 'frontpage_options',
+			'priority'  => 10,
+			'type'      => 'text',
+			)
+		);
+
 }
 add_action( 'customize_register', 'wprig_customize_register' );
 

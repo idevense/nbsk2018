@@ -677,13 +677,13 @@ table {
 a {
 	color: #0073aa;
 }
-
 /*a:visited {
 	color: #333;
 }*/
 
 a:hover, a:focus, a:active {
-	color: #00a0d2;
+	/*color: #00a0d2;*/
+	color: rgba(255, 123, 0, 0.900);
 }
 
 a:focus {
@@ -796,7 +796,8 @@ textarea {
 }
 .header-wrapper {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
+	height: 100%;
 	justify-content: space-between;
 	flex-flow: row nowrap;
 	max-width: calc(var(--content-width) * 16)px; /* Fallback for older browsers. */

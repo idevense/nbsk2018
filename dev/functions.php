@@ -347,8 +347,13 @@ function wprig_styles() {
 	// Enqueue menu sass stylesheet
 	wp_enqueue_style( 'mainmenu-style', get_theme_file_uri( '/css/mainmenu.css' ), array(), '20192801');
 
+	// Enqueue blog sass stylesheet
+	wp_enqueue_style( 'blog-style', get_theme_file_uri( '/css/blog.css' ), array(), '20192801');
+
+
 	// Enqueue custom widgets sass stylesheet
 	wp_enqueue_style( 'customwidget-style', get_theme_file_uri( '/css/customwidgets.css' ), array(), '20192801');
+
 	// Enqueue FontAwesome.
 	wp_enqueue_style( 'load-fa', 'https://use.fontawesome.com/releases/v5.6.3/css/all.css' );
 
@@ -441,3 +446,14 @@ require get_template_directory() . '/pluggable/lazyload/lazyload.php';
  */
 require get_template_directory() . '/inc/custom-walker.php';
 
+function get_url_of_page_id() {
+	$page_id = get_theme_mod( 'frontpage_dropdown_page', 'default_value' );
+		return get_permalink( $page_id );
+}
+add_action( 'after_setup_theme' ,'get_url_of_page_id' );
+
+function get_txt_of_page_id() {
+	$page_txt = get_theme_mod( 'frontpage_dropdown_text', 'default_value' );
+		return $page_txt;
+}
+add_action( 'after_setup_theme' ,'get_txt_of_page_id' );

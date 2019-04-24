@@ -53,6 +53,10 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
+#: custom-page-template.php:3, Widgetized-Page.php:3
+msgid "Widgetized Page Template"
+msgstr ""
+
 #: functions.php:47
 msgid "Primary"
 msgstr ""
@@ -157,15 +161,19 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:319
+#: functions.php:319, functions.php:328
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:369
+#: functions.php:326
+msgid "Widgetarea"
+msgstr ""
+
+#: functions.php:389
 msgid "Expand child menu"
 msgstr ""
 
-#: functions.php:370
+#: functions.php:390
 msgid "Collapse child menu"
 msgstr ""
 
@@ -178,7 +186,7 @@ msgid "Open menu"
 msgstr ""
 
 #: header.php:71
-msgid "Menu"
+msgid "MENY"
 msgstr ""
 
 #: header.php:75
@@ -189,7 +197,7 @@ msgstr ""
 msgid "Theme Options"
 msgstr ""
 
-#: inc/customizer.php:54, inc/customizer.php:101
+#: inc/customizer.php:54, inc/customizer.php:146
 msgid "Lazy-load images"
 msgstr ""
 
@@ -205,7 +213,19 @@ msgstr ""
 msgid "Lazy-load off"
 msgstr ""
 
-#: inc/customizer.php:102
+#: inc/customizer.php:68
+msgid "Frontpage Options"
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Select Page to Link"
+msgstr ""
+
+#: inc/customizer.php:103
+msgid "Type in Text for Link"
+msgstr ""
+
+#: inc/customizer.php:147
 msgid "Load images immediately"
 msgstr ""
 
@@ -279,6 +299,10 @@ msgstr ""
 msgid "Nosidebar Page Template"
 msgstr ""
 
+#: template-parts/content-custompage.php:25, template-parts/content-menupage.php:25, template-parts/content-page.1.php:25, template-parts/content-page.php:25, template-parts/content.php:56
+msgid "Pages:"
+msgstr ""
+
 #: template-parts/content-none.php:13
 msgid "Nothing Found"
 msgstr ""
@@ -294,10 +318,6 @@ msgstr ""
 
 #: template-parts/content-none.php:49
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr ""
-
-#: template-parts/content-page.php:25, template-parts/content.php:56
-msgid "Pages:"
 msgstr ""
 
 #. translators: %s: Name of current post. Only visible to screen readers
