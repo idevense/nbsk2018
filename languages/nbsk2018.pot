@@ -177,6 +177,163 @@ msgstr ""
 msgid "Collapse child menu"
 msgstr ""
 
+#: functions.php:560
+msgctxt "plural"
+msgid "courses"
+msgstr ""
+
+#: functions.php:561
+msgctxt "singular"
+msgid "course"
+msgstr ""
+
+#: functions.php:562
+msgctxt "admin menu"
+msgid "Course catalogue"
+msgstr ""
+
+#: functions.php:563
+msgctxt "admin bar"
+msgid "Courses"
+msgstr ""
+
+#: functions.php:564
+msgctxt "add new"
+msgid "Add New"
+msgstr ""
+
+#: functions.php:565
+msgid "Add New course"
+msgstr ""
+
+#: functions.php:566
+msgid "New course"
+msgstr ""
+
+#: functions.php:567
+msgid "Edit course"
+msgstr ""
+
+#: functions.php:568
+msgid "View course"
+msgstr ""
+
+#: functions.php:569
+msgid "All courses"
+msgstr ""
+
+#: functions.php:570
+msgid "Search course"
+msgstr ""
+
+#: functions.php:571
+msgid "No course found."
+msgstr ""
+
+#: functions.php:604
+msgctxt "taxonomy general name"
+msgid "Fagfelt"
+msgstr ""
+
+#: functions.php:605
+msgctxt "taxonomy singular name"
+msgid "Fagfelt"
+msgstr ""
+
+#: functions.php:606
+msgid "Search Fagfelt"
+msgstr ""
+
+#: functions.php:607
+msgid "All Fagfelt"
+msgstr ""
+
+#: functions.php:608
+msgid "Parent Fagfelt"
+msgstr ""
+
+#: functions.php:609
+msgid "Parent Fagfelt:"
+msgstr ""
+
+#: functions.php:610
+msgid "Edit Fagfelt"
+msgstr ""
+
+#: functions.php:611
+msgid "Update Fagfelt"
+msgstr ""
+
+#: functions.php:612
+msgid "Add New Fagfelt"
+msgstr ""
+
+#: functions.php:613
+msgid "New Fagfelt Name"
+msgstr ""
+
+#: functions.php:614
+msgid "Fagfelt"
+msgstr ""
+
+#: functions.php:631
+msgctxt "taxonomy general name"
+msgid "Kurskoder"
+msgstr ""
+
+#: functions.php:632
+msgctxt "taxonomy singular name"
+msgid "Kurskode"
+msgstr ""
+
+#: functions.php:633
+msgid "Search Kurskoder"
+msgstr ""
+
+#: functions.php:634
+msgid "Popular Kurskoder"
+msgstr ""
+
+#: functions.php:635
+msgid "All Kurskoder"
+msgstr ""
+
+#: functions.php:638
+msgid "Edit Coursecode"
+msgstr ""
+
+#: functions.php:639
+msgid "Update Coursecode"
+msgstr ""
+
+#: functions.php:640
+msgid "Add New Coursecode"
+msgstr ""
+
+#: functions.php:641
+msgid "New Coursecode"
+msgstr ""
+
+#: functions.php:642
+msgid "Separate coursecodes with commas"
+msgstr ""
+
+#: functions.php:643
+msgid "Add or remove coursecodes"
+msgstr ""
+
+#: functions.php:644
+msgid "Choose from the most used coursecodes"
+msgstr ""
+
+#: functions.php:645
+msgid "No coursecodes found."
+msgstr ""
+
+#: functions.php:646
+msgid "Coursecodes"
+msgstr ""
+
 #: header.php:29
 msgid "Skip to content"
 msgstr ""

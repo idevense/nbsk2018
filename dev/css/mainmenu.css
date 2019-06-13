@@ -77,8 +77,7 @@
 	.primary-menu-container {
 		display: flex;
 		justify-content: center;
-		flex-flow: row wrap;
-		overflow: hidden; }
+		flex-flow: row wrap; }
 	.primary-menu-container > :nth-child(odd) {
 		border-right: 1px solid var(--footer-font-color); }
 	.column {

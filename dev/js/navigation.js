@@ -141,7 +141,7 @@ function initMenuToggle() {
 
 /**
  * Disable Scrolling when menu is open
- */
+*/
 function noscroll() {
 	var docbody = document.body;
 	const MENUTOGGLE = MTOG.querySelector( '.menu-toggle' );

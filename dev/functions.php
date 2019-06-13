@@ -457,3 +457,228 @@ function get_txt_of_page_id() {
 		return $page_txt;
 }
 add_action( 'after_setup_theme' ,'get_txt_of_page_id' );
+
+/**
+ * Custom Post Type Kurskatalog
+ */
+
+ //register meta-boxes
+function wprig_courses_metabox( WP_Post $post ) {
+	add_meta_box( 'courses_metabox', 'Course Details', function() use ($post) {
+		wp_nonce_field( 'courses_nonce', 'courses_nonce' );
+		?>
+		<table class="form-table">
+			<tr>
+				<th> <label for="url">Enter url:</label></th>
+				<td>
+					<input id="url"
+						name="url"
+						type="url"
+						value="<?php echo esc_attr( get_post_meta( $post->ID, 'url', true )); ?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th> <label for="sted">Sted:</label></th>
+				<td>
+					<input id="sted"
+						name="sted"
+						type="text"
+						value="<?php echo esc_attr( get_post_meta( $post->ID, 'sted', true )); ?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th> <label for="start">Starter:</label></th>
+				<td>
+					<input id="start"
+						name="start"
+						type="date"
+						value="<?php echo esc_attr( get_post_meta( $post->ID, 'start', true )); ?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th> <label for="slutt">Slutter:</label></th>
+				<td>
+					<input id="slutt"
+						name="slutt"
+						type="date"
+						value="<?php echo esc_attr( get_post_meta( $post->ID, 'slutt', true )); ?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th> <label for="frist">Søknadsfrist:</label></th>
+				<td>
+					<input id="frist"
+						name="frist"
+						type="date"
+						value="<?php echo esc_attr( get_post_meta( $post->ID, 'frist', true )); ?>"
+					/>
+				</td>
+			</tr>
+		</table>
+		<?php
+	});
+}
+
+//save metabox
+function wprig_save_courses_metabox( $post_id ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( $parent_id = wp_is_post_revision( $post_id ) ) {
+        $post_id = $parent_id;
+    }
+	$fields = [
+		'url',
+		'sted',
+		'start',
+		'slutt',
+		'frist',
+	];
+	foreach ( $fields as $field ) {
+		if ( array_key_exists( $field, $_POST ) ) {
+			update_post_meta ( $post_id, $field, sanitize_text_field( $_POST[$field] ) );
+		}
+	}
+}
+add_action( 'save_post', 'wprig_save_courses_metabox' );
+
+//register the cpt
+function wprig_post_type_courses() {
+
+	$supports = array(
+		'title', // post title
+		'editor', // post content
+		'thumbnail', // featured images
+		'excerpt', // post excerpt
+		'custom-fields', // custom fields
+		'post-formats', // post formats
+		);
+		$labels = array(
+		'name' => _x('courses', 'plural', 'wprig'),
+		'singular_name' => _x('course', 'singular', 'wprig'),
+		'menu_name' => _x('Course catalogue', 'admin menu', 'wprig'),
+		'name_admin_bar' => _x('Courses', 'admin bar', 'wprig'),
+		'add_new' => _x('Add New', 'add new', 'wprig'),
+		'add_new_item' => __('Add New course', 'wprig'),
+		'new_item' => __('New course', 'wprig'),
+		'edit_item' => __('Edit course', 'wprig'),
+		'view_item' => __('View course', 'wprig'),
+		'all_items' => __('All courses', 'wprig'),
+		'search_items' => __('Search course', 'wprig'),
+		'not_found' => __('No course found.', 'wprig'),
+		);
+		$args = array(
+		'supports' => $supports,
+		'labels' => $labels,
+		'public' => true,
+		'show_in_rest' => true,
+		'descripton' => 'Coursecatalogue for nbsk',
+		'menu_icon' => 'dashicons-welcome-learn-more',
+		'query_var' => true,
+		'rewrite' => array('slug' => 'course'),
+		'has_archive' => true,
+		'hierarchical' => false,
+		'register_meta_box_cb' => 'wprig_courses_metabox',
+		);
+		register_post_type('course', $args);
+
+		// change title placeholder text
+		add_filter( 'enter_title_here', function( $title) {
+			$screen = get_current_screen();
+
+			if ( 'course' == $screen->post_type ) {
+				$title = 'Enter name of course here';
+			}
+
+			return $title;
+		});
+		}
+		add_action('init', 'wprig_post_type_courses');
+
+		//adding taxonomies for the courses post type
+		function wprig_taxonomies_courses() {
+				$labels = array(
+					'name'              => _x( 'Fagfelt', 'taxonomy general name', 'wprig' ),
+					'singular_name'     => _x( 'Fagfelt', 'taxonomy singular name', 'wprig' ),
+					'search_items'      => __( 'Search Fagfelt', 'wprig' ),
+					'all_items'         => __( 'All Fagfelt', 'wprig' ),
+					'parent_item'       => __( 'Parent Fagfelt', 'wprig' ),
+					'parent_item_colon' => __( 'Parent Fagfelt:', 'wprig' ),
+					'edit_item'         => __( 'Edit Fagfelt', 'wprig' ),
+					'update_item'       => __( 'Update Fagfelt', 'wprig' ),
+					'add_new_item'      => __( 'Add New Fagfelt', 'wprig' ),
+					'new_item_name'     => __( 'New Fagfelt Name', 'wprig' ),
+					'menu_name'         => __( 'Fagfelt', 'wprig' ),
+				);
+
+				$args = array(
+					'public' => true,
+					'show_in_rest' => true,
+					'hierarchical'          => true,
+					'labels'                => $labels,
+					'show_ui'               => true,
+					'show_admin_column'     => true,
+					'query_var'             => true,
+					'rewrite'               => array( 'slug' => 'fagfelt' ),
+				);
+
+			register_taxonomy( 'fagfelt', array( 'course' ), $args );
+
+				$labels = array(
+					'name'                       => _x( 'Coursecodes', 'taxonomy general name', 'wprig' ),
+					'singular_name'              => _x( 'Coursecode', 'taxonomy singular name', 'wprig' ),
+					'search_items'               => __( 'Search Coursecodes', 'wprig' ),
+					'popular_items'              => __( 'Popular Coursecodes', 'wprig' ),
+					'all_items'                  => __( 'All Coursecodes', 'wprig' ),
+					'parent_item'                => null,
+					'parent_item_colon'          => null,
+					'edit_item'                  => __( 'Edit Coursecode', 'wprig' ),
+					'update_item'                => __( 'Update Coursecode', 'wprig' ),
+					'add_new_item'               => __( 'Add New Coursecode', 'wprig' ),
+					'new_item_name'              => __( 'New Coursecode', 'wprig' ),
+					'separate_items_with_commas' => __( 'Separate coursecodes with commas', 'wprig' ),
+					'add_or_remove_items'        => __( 'Add or remove coursecodes', 'wprig' ),
+					'choose_from_most_used'      => __( 'Choose from the most used coursecodes', 'wprig' ),
+					'not_found'                  => __( 'No coursecodes found.', 'wprig' ),
+					'menu_name'                  => __( 'Coursecodes', 'wprig' ),
+				);
+
+					$args = array(
+						'public' => true,
+						'show_in_rest' => true,
+						'hierarchical'          => false,
+						'labels'                => $labels,
+						'show_ui'               => true,
+						'show_admin_column'     => true,
+						'update_count_callback' => '_update_post_term_count',
+						'query_var'             => true,
+						'rewrite'               => array( 'slug' => 'coursecode' ),
+					);
+
+			register_taxonomy( 'coursecode', 'course', $args );
+		}
+
+	add_action( 'init', 'wprig_taxonomies_courses' );
+
+/**
+ * Display advanced TinyMCE editor in taxonomy page
+ */
+function add_form_fields_example($term, $taxonomy){
+
+    ?>
+    <tr valign="top">
+        <th scope="row">Description</th>
+        <td>
+            <?php wp_editor(html_entity_decode($term->description), 'description', array('media_buttons' => false)); ?>
+            <script>
+                jQuery(window).ready(function(){
+                    jQuery('label[for=description]').parent().parent().remove();
+                });
+            </script>
+        </td>
+    </tr>
+    <?php
+}
+add_action("coursecode_edit_form_fields", 'add_form_fields_example', 10, 2);
